@@ -18,13 +18,13 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    @property
-    def cities(self):
-        list_of_cities = []
-        # relationship between State and City
-        for city in models.storage.all("City").values():
-            # with state_id equals to the current State.id
-            if city.state_id == self.id:
-                list_of_cities.append(city)
-        return list_of_cities
-        # list of City with state_id equals to the current State.id
+        @property
+        def cities(self):
+            list_of_cities = []
+            # relationship between State and City
+            for city in models.storage.all("City").values():
+                # with state_id equals to the current State.id
+                if city.state_id == self.id:
+                    list_of_cities.append(city)
+            return list_of_cities
+            # list of City with state_id equals to the current State.id

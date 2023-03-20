@@ -19,17 +19,17 @@ class DBstorage:
     def __init__(self):
         """some"""
 
-        """user = getenv('HBNB_MYSQL_USER')
-        passwd = getenv('HBNB_MYSQL_PWD')
-        host = getenv('HBNB_MYSQL_HOST')
-        database = getenv('HBNB_MYSQL_DB')
-        environment = getenv('HBNB_ENV')"""
+        user = os.getenv('HBNB_MYSQL_USER')
+        passwd = os.getenv('HBNB_MYSQL_PWD')
+        host = os.getenv('HBNB_MYSQL_HOST')
+        database = os.getenv('HBNB_MYSQL_DB')
+        environment = os.getenv('HBNB_ENV')
         
-        user = os.environ['HBNB_MYSQL_USER']
-        passwd = os.environ['HBNB_MYSQL_PWD']
-        host = os.environ['HBNB_MYSQL_HOST']
-        database = os.environ['HBNB_MYSQL_DB']
-        environment = os.environ['HBNB_ENV']
+        """user = os.environ.get['HBNB_MYSQL_USER']
+        passwd = os.environ.get['HBNB_MYSQL_PWD']
+        host = os.environ.get['HBNB_MYSQL_HOST']
+        database = os.environ.get['HBNB_MYSQL_DB']
+        environment = os.environ.get['HBNB_ENV']"""
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:{}'
                                       .format(user, passwd, host, database),

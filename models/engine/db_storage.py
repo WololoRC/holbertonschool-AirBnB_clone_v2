@@ -22,12 +22,13 @@ class DBstorage:
         passwd = getenv('HBNB_MYSQL_PWD')
         host = getenv('HBNB_MYSQL_HOST')
         database = getenv('HBNB_MYSQL_DB')
+        environment = getenv('HBNB_ENV')
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:{}'
                                       .format(user, passwd, host, database),
                                       pool_pre_ping=True)
 
-        if getenv('HBNB_ENV') == 'test':
+        if environment == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):

@@ -4,6 +4,7 @@
 
 from sqlalchemy import (create_engine)
 from os import getenv
+import os
 from models.base_model import Base
 import models
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -18,11 +19,17 @@ class DBstorage:
     def __init__(self):
         """some"""
 
-        user = getenv('HBNB_MYSQL_USER')
+        """user = getenv('HBNB_MYSQL_USER')
         passwd = getenv('HBNB_MYSQL_PWD')
         host = getenv('HBNB_MYSQL_HOST')
         database = getenv('HBNB_MYSQL_DB')
-        environment = getenv('HBNB_ENV')
+        environment = getenv('HBNB_ENV')"""
+        
+        user = os.environ['HBNB_MYSQL_USER']
+        passwd = os.environ['HBNB_MYSQL_PWD']
+        host = os.environ['HBNB_MYSQL_HOST']
+        database = os.environ['HBNB_MYSQL_DB']
+        environment = os.environ['HBNB_ENV']
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:{}'
                                       .format(user, passwd, host, database),

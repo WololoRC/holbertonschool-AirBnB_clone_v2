@@ -48,7 +48,7 @@ class DBstorage:
             rows = self.__session.query(cls).all()
             for obj in rows:
                 key = obj.__class__.__name__ + '.' + obj.id
-                dictionary[k] = obj
+                dictionary[key] = obj
         return dictionary
         # this method must return a dictionary: (like FileStorage)
 

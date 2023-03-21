@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
+import os
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -9,22 +10,27 @@ from sqlalchemy.orm import relationship
 
 class State(BaseModel, Base):
     """ State class """
-    # for DBStorage
-    if getenv("HBNB_TYPE_STORAGE") == "db":
-        __tablename__ = 'states'
-        name = Column(String(128), nullable=False)
-        cities = relationship('City', backref="state", cascade="all, delete, delete-orphan")
+    __tablename__ = 'states'
 
+    # for DBStorage
+    name = Column(String(128), nullable=False)
+    cities = relationship('City', backref="state",
+                              cascade="all, delete, delete-orphan")
+
+    """
     else:
         name = ""
+    """
 
-    @property
-    def cities(self):
-        list_of_cities = []
-        # relationship between State and City
-        for city in models.storage.all("City").values():
-            # with state_id equals to the current State.id
-            if city.state_id == self.id:
-                list_of_cities.append(city)
-        return list_of_cities
-        # list of City with state_id equals to the current State.id
+    if os.getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def cities(self):
+            """some"""
+            list_of_cities = []
+            # relationship between State and City
+            for key, value in models.storage.all().values():
+                # with state_id equals to the current State.id
+                if value.__class__.__name__ == 'City' and value.state_id == self.id:
+                    list_of_cities.append(value)
+            return list_of_cities
+            # list of City with state_id equals to the current State.id

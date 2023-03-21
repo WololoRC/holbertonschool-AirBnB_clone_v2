@@ -17,14 +17,13 @@ class DBstorage:
 
     def __init__(self):
         """some"""
-
         user = os.getenv('HBNB_MYSQL_USER')
         passwd = os.getenv('HBNB_MYSQL_PWD')
         host = os.getenv('HBNB_MYSQL_HOST')
         database = os.getenv('HBNB_MYSQL_DB')
 
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:{}'
-                                      .format(user, passwd, host, database),
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
+                                      user, passwd, host, database),
                                       pool_pre_ping=True)
 
         if os.getenv('HBNB_ENV') == 'test':

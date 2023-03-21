@@ -9,7 +9,7 @@ from models.base_model import Base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 
-class DBstorage:
+class DBStorage:
     #Private class attributes:
     __engine = None
     __session = None

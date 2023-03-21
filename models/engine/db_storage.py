@@ -6,7 +6,6 @@ from sqlalchemy import (create_engine)
 import os
 from os import getenv
 from models.base_model import Base
-import models
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 

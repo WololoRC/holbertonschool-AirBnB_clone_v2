@@ -30,7 +30,8 @@ class DBstorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """some"""
+        """query on the current database session 
+        all objects depending of the class name"""
         if type(cls) is str:
             cls = eval(cls) # returns the result of the evaluated expression
 
@@ -67,12 +68,12 @@ class DBstorage:
             self.__session.delete(obj)
 
     def reload(self):
-        """some"""
+        """create all tables in the database"""
         # create all tables in the database
-        self.__session = Base.metadata.create_all(self.__engine)
+        Base.metadata.create_all(self.__engine)
         # create the current database session - from the engine
-        create_current_db = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(create_current_db)
+        create_db = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(create_db)
         # invokes sessionmaker.__call__()
         self.__session = Session()
         # work with session

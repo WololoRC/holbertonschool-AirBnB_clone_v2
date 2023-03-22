@@ -4,15 +4,21 @@
 
 from sqlalchemy import (create_engine)
 import os
+import models
 from os import getenv
 from models.base_model import Base
 from sqlalchemy.orm import scoped_session, sessionmaker
+from models.state import State
+from models.city import City
 
 
 class DBStorage:
-    #Private class attributes:
+    """Class for MySQL database storage"""
+    # Private class attributes:
     __engine = None
     __session = None
+    # for @all method if @cls is None
+    __classes = [State, City]
 
     def __init__(self):
         """some"""
@@ -22,40 +28,46 @@ class DBStorage:
         database = os.getenv('HBNB_MYSQL_DB')
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
-                                      user, passwd, host, database),
-                                      pool_pre_ping=True)
+            user, passwd, host, database),
+            pool_pre_ping=True)
 
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """query on the current database session 
-        all objects depending of the class name"""
-        if type(cls) is str:
-            cls = eval(cls) # returns the result of the evaluated expression
+        """
+        query on the current database session,
+        if cls != None of the class name,
+        else all.
+        """
 
         dictionary = {}
+        dict_objects = {}
 
-        if cls is None:
-            for table in self.__all_classes:
-                object = self.__session.query(table)
-                for one_obj in object:
-                    class_name = one_obj.__class__.__name__
-                    key = class_name + '.' + one_obj.id
-                    dictionary[key] = one_obj
+        if cls is not None:
+            if cls not in self.__classes:
+                return dictionary
+
+            else:
+                for record in self.__session.query(cls).order_by(cls.id):
+                    dictionary.update(
+                            {f"{type(record).__name__}.{record.id}": record})
+
         else:
-            rows = self.__session.query(cls).all()
-            for obj in rows:
-                key = obj.__class__.__name__ + '.' + obj.id
-                dictionary[key] = obj
+            for obj in self.__classes:
+                for record in self.__session.query(obj).order_by(obj.id):
+                    dictionary.update(
+                            {f"{type(record).__name__}.{record.id}": record})
+
         return dictionary
-        # this method must return a dictionary: (like FileStorage)
+
+    # this method must return a dictionary: (like FileStorage)
 
     def new(self, obj):
         """add the object to the current database session"""
         # add the object to the current database session (self.__session)
         self.__session.add(obj)
-    
+
     def save(self):
         """commit all changes of the current database session"""
         # commit all changes of the current database session (self.__session)

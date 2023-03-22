@@ -66,5 +66,4 @@ class FileStorage:
 
     def delete(self, obj=None):
         """Remove @obj from @__objects"""
-        # search al del #obj in @__objects #
         self.__objects.pop(f"{obj.__class__.__name__}.{obj.id}")

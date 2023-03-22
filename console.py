@@ -14,7 +14,6 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the functionality for the HBNB console"""
-
     # determines prompt for interactive/non-interactive modes
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
@@ -131,28 +130,22 @@ class HBNBCommand(cmd.Cmd):
             args = args[1:]
 
             for item in args:
-                # token por "=" #
                 a_item = item.split("=")
 
-                # si esto no ocurre no pasa nada #
-                try:
-                    if "\"" in a_item[1]:
-                        a_item[1] = a_item[1].strip("\"")
+                if "\"" in a_item[1]:
+                    a_item[1] = a_item[1].strip("\"")
 
-                        if "_" in a_item[1]:
-                            a_item[1].replace("_", " ")
+                    if "_" in a_item[1]:
+                        a_item[1] = a_item[1].replace("_", " ")
 
-                    elif "." in a_item[1]:
-                        a_item[1] = float(a_item[1])
+                elif "." in a_item[1]:
+                    a_item[1] = float(a_item[1])
 
-                    else:
-                        a_item[1] = int(a_item[1])
+                else:
+                    a_item[1] = int(a_item[1])
 
-                    new_instance.__dict__.update(
-                            {f"{a_item[0]}": f"{a_item[1]}"})
-
-                except Exception:
-                    break
+                new_instance.__dict__.update(
+                        {f"{a_item[0]}": f"{a_item[1]}"})
 
         print(new_instance.id)
         new_instance.save()
@@ -228,6 +221,7 @@ class HBNBCommand(cmd.Cmd):
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
+    def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
         print_list = []
 

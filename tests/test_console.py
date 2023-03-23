@@ -14,13 +14,13 @@ class testConsole(unittest.TestCase):
 
     def setClass(cls):
         """set up test"""
-        cls.console = HBNBCommand()
+        cls.consol = HBNBCommand()
 
     def tearDown(self) -> None:
         return super().tearDown()
     
     def tear_down(cls):
-        del cls.console
+        del cls.consol
 
     def tear_Down(self):
         try:
@@ -30,13 +30,13 @@ class testConsole(unittest.TestCase):
     
     def test_emptyline(self):
         with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("\n")
+            self.consol.onecmd("\n")
             self.assertEqual('', f.getvalue())
     
     def test_quit(self):
         """some"""
         with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("\n")
+            self.consol.onecmd("\n")
             self.assertEqual('', f.getvalue())
             
     def test_create(self):

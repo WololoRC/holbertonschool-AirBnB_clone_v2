@@ -45,7 +45,8 @@ class TestConsole(unittest.TestCase):
         """some"""
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("create")
-            self.assertEqual("** class name missing **\n", f.getvalue())
+            self.assertEqual(
+                "** class name missing **\n", f.getvalue())
 
 if __name__ == '__main__':
     unittest.main()

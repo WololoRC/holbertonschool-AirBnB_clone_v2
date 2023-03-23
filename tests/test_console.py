@@ -18,7 +18,7 @@ class testConsole(unittest.TestCase):
         cls.consol = HBNBCommand()
 
     @classmethod
-    def tear_down(cls):
+    def teardown(cls):
         del cls.consol
 
     def tearDown(self):

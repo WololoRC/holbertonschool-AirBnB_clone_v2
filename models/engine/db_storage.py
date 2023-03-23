@@ -11,6 +11,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from models.state import State
 from models.city import City
 from models.user import User
+from models.place import Place
 
 
 class DBStorage:
@@ -19,7 +20,7 @@ class DBStorage:
     __engine = None
     __session = None
     # for @all method if @cls is None
-    __classes = [State, City, User]
+    __classes = [State, City, User, Place]
 
     def __init__(self):
         """some"""

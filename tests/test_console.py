@@ -12,17 +12,16 @@ from console import HBNBCommand
 class testConsole(unittest.TestCase):
     """some"""
 
+    @classmethod
     def setClass(cls):
         """set up test"""
         cls.consol = HBNBCommand()
 
-    def tearDown(self) -> None:
-        return super().tearDown()
-    
+    @classmethod
     def tear_down(cls):
         del cls.consol
 
-    def tear_Down(self):
+    def tearDown(self):
         try:
             os.remove('file.json')
         except Exception:

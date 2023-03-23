@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                     a_item[1] = a_item[1].strip("\"")
 
                     if "_" in a_item[1]:
-                        if getenv("HBNB_TYPE_STORAGE") != "db":
+                        if a_item[0] != "password":
                             a_item[1] = a_item[1].replace("_", " ")
 
                 elif "." in a_item[1]:

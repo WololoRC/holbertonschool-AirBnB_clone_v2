@@ -13,26 +13,21 @@ class TestConsole(unittest.TestCase):
     """some"""
 
     @classmethod
-    def setClass(cls):
-        """set up test"""
-        try:
-            os.rename("file.json", "tmp")
-        except IOError:
-            pass
-        cls.HBNB = HBNBCommand()
+    def setUpClass(cls):
+        """some"""
+        cls.consol = HBNBCommand()
 
     @classmethod
     def teardown(cls):
         """some"""
-        del cls.HBNB
+        del cls.consol
 
-    def tearDown(cls):
+    def tearDown(self):
         """some"""
         try:
-            os.rename("tmp", "file.json")
-        except IOError:
+            os.remove("file.json")
+        except Exception:
             pass
-        del cls.HBNB
     
     def test_emptyline(self):
         """some"""

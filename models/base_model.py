@@ -7,7 +7,6 @@ from sqlalchemy import Column, DateTime, Integer, String
 
 Base = declarative_base()
 
-
 class BaseModel:
     """A base class for all hbnb models"""
 

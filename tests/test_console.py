@@ -6,7 +6,7 @@ import os
 from unittest.mock import patch
 from io import StringIO
 import unittest
-from console import HBNBCommand
+import console
 
 
 class TestConsole(unittest.TestCase):
@@ -15,7 +15,7 @@ class TestConsole(unittest.TestCase):
     @classmethod
     def setClass(cls):
         """set up test"""
-        cls.consol = HBNBCommand()
+        cls.consol = console.HBNBCommand()
 
     @classmethod
     def teardown(cls):

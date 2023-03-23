@@ -19,15 +19,18 @@ class TestConsole(unittest.TestCase):
 
     @classmethod
     def teardown(cls):
+        """some"""
         del cls.consol
 
     def tearDown(self):
+        """some"""
         try:
             os.remove('file.json')
         except Exception:
             pass
     
     def test_emptyline(self):
+        """some"""
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("\n")
             self.assertEqual('', f.getvalue())

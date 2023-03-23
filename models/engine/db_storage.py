@@ -10,10 +10,7 @@ from models.base_model import Base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.state import State
 from models.city import City
-<<<<<<< HEAD
-=======
 from models.user import User
->>>>>>> juako
 
 
 class DBStorage:
@@ -22,11 +19,7 @@ class DBStorage:
     __engine = None
     __session = None
     # for @all method if @cls is None
-<<<<<<< HEAD
-    __classes = [State, City]
-=======
     __classes = [State, City, User]
->>>>>>> juako
 
     def __init__(self):
         """some"""

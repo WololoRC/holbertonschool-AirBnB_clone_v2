@@ -13,14 +13,14 @@ class TestConsole(unittest.TestCase):
     """some"""
 
     @classmethod
-    def setClass(cls):
+    def setClass(self):
         """set up test"""
-        cls.consol = HBNBCommand()
+        self.consol = HBNBCommand()
 
     @classmethod
-    def teardown(cls):
+    def teardown(self):
         """some"""
-        del cls.consol
+        del self.consol
 
     def tearDown(self):
         """some"""

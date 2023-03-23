@@ -9,7 +9,7 @@ import unittest
 from console import HBNBCommand
 
 
-class testConsole(unittest.TestCase):
+class TestConsole(unittest.TestCase):
     """some"""
 
     @classmethod

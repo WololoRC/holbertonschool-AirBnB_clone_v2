@@ -18,7 +18,7 @@ class test_User(test_basemodel):
         """ """
         new_name = self.value()
         self.assertEqual(type(new_name.first_name), str)
-    '''
+
     def test_last_name(self):
         """ """
         new_last = self.value()
@@ -32,7 +32,7 @@ class test_User(test_basemodel):
     def test_password(self):
         """ """
         new_pass = self.value()
-        self.assertEqual(type(new_pass.password), str)'''
+        self.assertEqual(type(new_pass.password), str)
 
 if __name__ == '__main__':
     unittest.main()

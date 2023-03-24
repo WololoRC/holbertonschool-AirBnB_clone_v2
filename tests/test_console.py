@@ -5,7 +5,7 @@ import unittest
 from console import HBNBCommand
 
 
-class TestConsole(unittest.TestCase):
+class test_Console(unittest.TestCase):
 
     def test_create(self):
         """ """

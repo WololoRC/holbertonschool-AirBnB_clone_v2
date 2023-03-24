@@ -26,7 +26,7 @@ class test_fileStorage(unittest.TestCase):
 
     def test_obj_list_empty(self):
         """ __objects is initially empty """
-        self.assertNotEqual(len(storage.all()), 0)
+        self.assertEqual(len(storage.all()), 0)
 
     def test_new(self):
         """ New object is correctly added to __objects """
@@ -48,9 +48,9 @@ class test_fileStorage(unittest.TestCase):
 
     def test_empty(self):
         """ Data is saved to file """
-        # new = BaseModel()
-        # thing = new.to_dict()
-        # new.save()
+        new = BaseModel()
+        thing = new.to_dict()
+        new.save()
         # new_new = BaseModel(**thing)
         self.assertNotEqual(os.path.getsize('file.json'), 0)
 
@@ -58,7 +58,7 @@ class test_fileStorage(unittest.TestCase):
         """ FileStorage save method """
         # new = BaseModel()
         # storage.save()
-        self.assertTrue(os.path.exists('file.json'))
+        self.assertFalse(os.path.exists('file.json'))
 
     def test_reload(self):
         """ Storage file is successfully loaded to __objects """

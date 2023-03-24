@@ -77,8 +77,14 @@ class test_basemodel(unittest.TestCase):
     def test_kwargs_one(self):
         """ """
         n = {'Name': 'test'}
+        new = self.value(**n)
         with self.assertRaises(KeyError):
+<<<<<<< HEAD
             self.value(**n)
+=======
+            new()
+            
+>>>>>>> 603b6619e63bdfa2af938028c727ce8395748f7f
 
     def test_id(self):
         """ """

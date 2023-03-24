@@ -14,8 +14,8 @@ class TestDBstorage(unittest.TestCase):
 
     def test_newState(self):
         """some"""
-        new = State(name='Texas')
-        self.assertEqual(new.name, 'Texas')
+        new = State(name='California')
+        self.assertEqual(new.name, 'California')
 
 
 if __name__ == '__main__':

@@ -26,7 +26,8 @@ class State(BaseModel, Base):
             # relationship between State and City
             for key, value in models.storage.all().values():
                 # with state_id equals to the current State.id
-                if value.__class__.__name__ == 'City' and value.state_id == self.id:
+                if value.__class__.__name__ == 'City' and \
+                        value.state_id == self.id:
                     list_of_cities.append(value)
             return list_of_cities
             # list of City with state_id equals to the current State.id

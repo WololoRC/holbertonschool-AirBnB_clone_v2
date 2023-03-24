@@ -10,3 +10,6 @@ class TestConsole(unittest.TestCase):
     def test_create(self):
         """ """
         return HBNBCommand()
+
+if __name__ == '__main__':
+    unittest.main()

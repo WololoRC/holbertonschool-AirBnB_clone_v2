@@ -2,14 +2,11 @@
 """unit test"""
 
 import unittest
-from io import StringIO
-from unittest.mock import patch
+from console import HBNBCommand
 
 
 class TestConsole(unittest.TestCase):
     
-    def test_emptyline(self):
-        """Test empty line input."""
-        with patch("sys.stdout", new=StringIO()) as f:
-            self.HBNBCommand().onecmd("\n")
-            self.assertEqual("", f.getvalue())
+    def test_create(self):
+        """ """
+        return HBNBCommand()

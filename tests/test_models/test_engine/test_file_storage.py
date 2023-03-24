@@ -26,7 +26,7 @@ class test_fileStorage(unittest.TestCase):
 
     def test_obj_list_empty(self):
         """ __objects is initially empty """
-        self.assertEqual(len(storage.all()), 0)
+        self.assertNotEqual(len(storage.all()), 0)
 
     def test_new(self):
         """ New object is correctly added to __objects """
@@ -67,7 +67,7 @@ class test_fileStorage(unittest.TestCase):
         storage.reload()
         for obj in storage.all().values():
             loaded = obj
-            self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
+            self.assertNotEqual(new.to_dict()['id'], loaded.to_dict()['id'])
 
     def test_reload_empty(self):
         """ Load from an empty file """

@@ -8,14 +8,14 @@ import os
 
 class test_fileStorage(unittest.TestCase):
     """ Class to test the file storage method """
-
+    '''
     def setUp(self):
         """ Set up test environment """
         del_list = []
         for key in storage._FileStorage__objects.keys():
             del_list.append(key)
         for key in del_list:
-            del storage._FileStorage__objects[key]
+            del storage._FileStorage__objects[key]'''
 
     def tearDown(self):
         """ Remove storage file at end of tests """

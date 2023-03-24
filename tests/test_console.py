@@ -11,5 +11,6 @@ class TestConsole(unittest.TestCase):
         """ """
         return HBNBCommand()
 
+
 if __name__ == '__main__':
     unittest.main()

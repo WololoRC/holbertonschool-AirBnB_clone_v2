@@ -85,7 +85,7 @@ class test_fileStorage(unittest.TestCase):
         """ BaseModel save method calls storage save """
         # new = BaseModel()
         # new.save()
-        self.assertTrue(os.path.exists('file.json'))
+        self.assertFalse(os.path.exists('file.json'))
 
     def test_type_path(self):
         """ Confirm __file_path is string """

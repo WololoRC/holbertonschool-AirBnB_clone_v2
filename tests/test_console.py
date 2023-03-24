@@ -3,7 +3,7 @@
 
 import unittest
 from io import StringIO
-from unittest import patch
+from unittest.mock import patch
 
 
 class TestConsole(unittest.TestCase):

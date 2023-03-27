@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""My first flask module"""
+"""
+Starts a web application
+- listening on 0.0.0.0 port 5000
+- '/' displays Hello HBN
+"""
 rom flask import Flask
 
 app = Flask(__name__)

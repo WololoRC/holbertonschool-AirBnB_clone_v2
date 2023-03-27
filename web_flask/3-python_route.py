@@ -4,7 +4,8 @@ Starts a web application
 - listening on 0.0.0.0 port 5000
 - '/' display: 'Hello HBNB!'
 - '/hbnb' display: 'HBNB'
-- 'C/<text>'display: C <text>
+- '/C/<text>'display: C <text_variable>
+- '/python/<text>' display: python <text_variable>
 """
 
 from flask import Flask

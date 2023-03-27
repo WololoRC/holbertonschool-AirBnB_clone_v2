@@ -29,14 +29,14 @@ def hbnb():
 @app.route('/C/<text>', strict_slashes=False)
 def C_is_fun(text):
     """As hell!"""
-    return "C {}".format(escape(text).replace('_', ' ')})
+    return "C {}".format(escape(text).replace('_', ' '))
 
 
 @app.route('/python', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_route(text):
     """Is Awesome!"""
-    return "Python {}".format(escape(text).replace('_', ' ')})
+    return "Python {}".format(escape(text).replace('_', ' '))
 
 
 @app.route('/number/<int:n>', strict_slashes=False)

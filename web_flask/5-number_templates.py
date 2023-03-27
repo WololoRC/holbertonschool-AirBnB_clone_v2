@@ -6,9 +6,11 @@ Starts a web application
 - '/hbnb' display: 'HBNB'
 - '/C/<text>'display: C <text_variable>
 - '/python/<text>' display: python <text_variable>
+- '/number/<int:n>' if n == int display '<n> is a number'
+- '/number_template/<int:n>' if n == int => template with <n> in <BODY>
 """
 
-from flask import Flask
+from flask import Flask, render_template
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -37,6 +39,19 @@ def C_is_fun(text):
 def python_route(text):
     """Is Awesome!"""
     return "Python {}".format(escape(text).replace('_', ' '))
+
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def number_route(n):
+    """Is a number?"""
+    return "{} is a number".format(n)
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def number_template(n):
+    """Template if is a number"""
+    return render_template('5-number.html', n=n)
+
 
 
 if __name__ == '__main__':

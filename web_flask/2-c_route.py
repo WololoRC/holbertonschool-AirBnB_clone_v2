@@ -28,7 +28,7 @@ def hbnb():
 @app.route('/C/<text>', strict_slashes=False)
 def C_is_fun(text):
     """As hell!"""
-    return f"C {escape(text).replace('_', ' ')}"
+    return f"C {}".format(escape(text).replace('_', ' '))
 
 
 if __name__ == '__main__':

@@ -55,13 +55,15 @@ class DBStorage:
             else:
                 for record in self.__session.query(cls).order_by(cls.id):
                     dictionary.update(
-                            {"{}.{}".format(type(record).__name__, record.id): record})
+                            {"{}.{}".format(
+                                type(record).__name__, record.id): record})
 
         else:
             for obj in self.__classes:
                 for record in self.__session.query(obj).order_by(obj.id):
                     dictionary.update(
-                            {"{}.{}".format(type(record).__name__, record.id): record})
+                            {"{}.{}".format(
+                                type(record).__name__, record.id): record})
 
         return dictionary
 

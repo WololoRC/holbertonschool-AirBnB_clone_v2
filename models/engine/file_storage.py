@@ -70,3 +70,7 @@ class FileStorage:
             self.__objects.pop(f"{obj.__class__.__name__}.{obj.id}")
         else:
             pass
+
+    def close(self):
+        """His name is 'close' but do 'reload'"""
+        self.reload()

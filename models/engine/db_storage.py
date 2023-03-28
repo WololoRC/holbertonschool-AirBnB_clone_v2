@@ -92,3 +92,7 @@ class DBStorage:
         # invokes sessionmaker.__call__()
         self.__session = Session()
         # work with session
+
+    def close(self):
+        """Close current session"""
+        self.__session.close()

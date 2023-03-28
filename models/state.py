@@ -23,11 +23,8 @@ class State(BaseModel, Base):
         def cities(self):
             """some"""
             list_of_cities = []
-            # relationship between State and City
-            for key, value in models.storage.all().values():
-                # with state_id equals to the current State.id
+            for key, value in models.storage.all().items():
                 if value.__class__.__name__ == 'City' and \
                         value.state_id == self.id:
                     list_of_cities.append(value)
             return list_of_cities
-            # list of City with state_id equals to the current State.id

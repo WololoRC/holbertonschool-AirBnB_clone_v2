@@ -12,11 +12,13 @@ from models.amenity import Amenity
 
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/hbnb_filters', strict_slashes=False)
 def filters_route():
     return render_template(
-            '6-index.html', states=storage.all(State), amenities=storage.all(Amenity))
+            '6-index.html',
+            states=storage.all(State), amenities=storage.all(Amenity))
 
 
 @app.teardown_appcontext

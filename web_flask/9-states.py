@@ -11,6 +11,7 @@ from models.state import State
 
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/states', strict_slashes=False)
 def states_list_route():
@@ -25,7 +26,6 @@ def citites_by_state_list_route(a_id):
     states = storage.all(State).get(f"State.{a_id}")
     return render_template(
             '9-states.html', states=states, all_states=None)
-
 
 
 @app.teardown_appcontext

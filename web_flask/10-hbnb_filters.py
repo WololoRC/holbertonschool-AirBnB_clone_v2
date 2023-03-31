@@ -2,21 +2,21 @@
 """
 Start a Flask web application
 listening on 0.0.0.0 port: 5000
-- route:'/states_list' display a html page
-with the states inside DB listed
+- route:'/cities_by_states' display a html page
+with the state and cities relanted
 """
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-
+from models.amenity import Amenity
 
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/states_list', strict_slashes=False)
-def states_list_route():
-    """Put his template on rout"""
-    return render_template('7-states_list.html', states=storage.all(State))
+@app.route('/hbnb_filters', strict_slashes=False)
+def filters_route():
+    return render_template(
+            '6-index.html', states=storage.all(State), amenities=storage.all(Amenity))
 
 
 @app.teardown_appcontext

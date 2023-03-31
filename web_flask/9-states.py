@@ -11,7 +11,7 @@ from models.state import State
 
 app = Flask(__name__)
 
-
+@app.route('/')
 @app.route('/states', strict_slashes=False)
 def states_list_route():
     """All states template"""

@@ -2,8 +2,8 @@
 """
 Start a Flask web application
 listening on 0.0.0.0 port: 5000
-- route:'/cities_by_states' display a html page
-with the state and cities relanted
+- route:'/hbnb_filters' display index html
+of our late clone.'
 """
 from flask import Flask, render_template
 from models import storage
@@ -16,8 +16,9 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/hbnb_filters', strict_slashes=False)
 def filters_route():
+    """Render template on our filters rout"""
     return render_template(
-            '6-index.html',
+            '10-hbnb_filters.html',
             states=storage.all(State), amenities=storage.all(Amenity))
 
 
